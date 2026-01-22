@@ -9,7 +9,24 @@
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.j0nas7.outdoor-fitness-expo-app",
+      "entitlements": {
+        "com.apple.security.application-groups": [
+          "group.com.j0nas7.outdoor-fitness-expo-app"
+        ],
+        "com.apple.developer.healthkit": true
+      },
+      "infoPlist": {
+        "UIApplicationSupportsLiveActivities": true,
+        "NSSupportsLiveActivities": true,
+        "UIBackgroundModes": [
+          "audio",
+          "location"
+        ],
+        "NSHealthShareUsageDescription": "This app reads health data to track your running activity.",
+        "NSHealthUpdateUsageDescription": "This app writes workout data to Apple Health."
+      }
     },
     "android": {
       "adaptiveIcon": {
@@ -19,7 +36,14 @@
         "monochromeImage": "./assets/images/android-icon-monochrome.png"
       },
       "edgeToEdgeEnabled": true,
-      "predictiveBackGestureEnabled": false
+      "predictiveBackGestureEnabled": false,
+      "package": "com.j0nas7.outdoor_fitness_expo_app",
+      "permissions": [
+        "FOREGROUND_SERVICE",
+        "FOREGROUND_SERVICE_MEDIA_PLAYBACK",
+        "ACCESS_FINE_LOCATION",
+        "ACCESS_BACKGROUND_LOCATION"
+      ]
     },
     "web": {
       "output": "static",
@@ -38,7 +62,13 @@
             "backgroundColor": "#000000"
           }
         }
-      ]
+      ],
+      "./native_plugins/withAudioDuckingIOS",
+      "./native_plugins/withAudioDuckingAndroid",
+      "./native_plugins/withLiveActivitiesIOS",
+      "./native_plugins/android_speech/app.plugin.js",
+      "@bacons/apple-targets",
+      "react-native-health"
     ],
     "experiments": {
       "typedRoutes": true,

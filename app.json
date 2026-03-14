@@ -63,9 +63,8 @@
           }
         }
       ],
-      "./native_plugins/withAudioDuckingIOS",
-      "./native_plugins/withAudioDuckingAndroid",
       "./native_plugins/withLiveActivitiesIOS",
+      "./native_plugins/withAndroidSetup",
       "./native_plugins/android_speech/app.plugin.js",
       "@bacons/apple-targets",
       "react-native-health"

@@ -4,7 +4,7 @@ import { Workout } from '@/types';
 import { MyTheme } from '@/types/theme';
 import { WORKOUT_LOCATION_TASK } from '@/utils/location/workoutLocationTask';
 import { resetWorkoutStoreAndNotify, subscribeToWorkout } from '@/utils/location/workoutStore';
-import { speak, stopSpeak } from "@/utils/native/NativeSpeech";
+import { speak, startSpeechService, stopSpeak, stopSpeechService } from "@/utils/native/NativeSpeech";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useFocusEffect, useTheme } from '@react-navigation/native';
 import * as Location from 'expo-location';
@@ -82,6 +82,8 @@ export const Exercise: React.FC<ExerciseProps> = (props) => {
 
     useFocusEffect(
         React.useCallback(() => {
+            startSpeechService(); // Start Android speech service
+
             // Reset global workout store
             resetWorkoutStoreAndNotify();
 
@@ -108,6 +110,7 @@ export const Exercise: React.FC<ExerciseProps> = (props) => {
 
             return () => {
                 stopSpeak();
+                stopSpeechService(); // Stop Android speech service when leaving workout
             };
         }, [])
     );

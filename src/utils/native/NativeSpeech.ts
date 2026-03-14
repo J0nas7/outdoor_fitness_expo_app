@@ -3,6 +3,18 @@ import { NativeModules, Platform } from "react-native";
 const BackgroundSpeechIOS = NativeModules.BackgroundSpeechIOS;
 const BackgroundSpeechAndroid = NativeModules.BackgroundSpeechAndroid;
 
+export const startSpeechService = () => {
+    if (Platform.OS === "android" && BackgroundSpeechAndroid) {
+        BackgroundSpeechAndroid.startService?.();
+    }
+};
+
+export const stopSpeechService = () => {
+    if (Platform.OS === "android" && BackgroundSpeechAndroid) {
+        BackgroundSpeechAndroid.stopService?.();
+    }
+};
+
 export const speak = (text: string) => {
     if (Platform.OS === "ios" && BackgroundSpeechIOS) {
         BackgroundSpeechIOS.speak(text);

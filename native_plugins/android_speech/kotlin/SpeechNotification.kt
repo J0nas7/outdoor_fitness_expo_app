@@ -28,7 +28,7 @@ object SpeechNotification {
         return NotificationCompat.Builder(context, CHANNEL_ID)
             .setContentTitle("Workout running")
             .setContentText(text)
-            .setSmallIcon(R.drawable.ic_notification)
+            .setSmallIcon(R.mipmap.ic_launcher)
             .setOngoing(true)
             .build()
     }
